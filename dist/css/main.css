@@ -43,6 +43,15 @@ body{
   height: 100%;
 }
 
+header{
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 0;
+  padding-top: 5vw;
+  text-align: left;
+}
+
 #particles {
   height: 100vh;
   position: fixed;
@@ -117,7 +126,7 @@ body{
 
 body.ready #title{
   transform: translate(0, -7vw);
-  animation: moveSlideshow 70s linear infinite;
+  animation: moveSlideshow 60s linear infinite;
   opacity: 1;
 }
 
@@ -176,7 +185,18 @@ section#home .dudes img{
   transform: rotate(90deg);
 }
 
-section#home .dudes .mask {
+section#home .dudes .mask.step-1 {
+  -webkit-mask: url(../img/sprite2.png);
+          mask: url(../img/sprite2.png);
+  -webkit-mask-size: 7100% 100%;
+          mask-size: 7100% 100%;
+  -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+section#home .dudes .mask.step-2 {
   -webkit-mask: url(../img/sprite.png);
           mask: url(../img/sprite.png);
   -webkit-mask-size: 7400% 100%;
@@ -194,16 +214,16 @@ section#home .dudes .mask.step-2 {
 }
 
 body.ready section#home .dudes .mask.step-1 {
-  -webkit-animation: mask-play .4s steps(73) forwards .6s;
-          animation: mask-play .4s steps(73) forwards .6s;
+  -webkit-animation: mask-play 1s steps(70) forwards 1.6s;
+          animation: mask-play 1s steps(70) forwards 1.6s;
   opacity: 0;
   transition: .4s;
-  transition-delay: 1.2s;
+  transition-delay: 2.8s;
 }
 
 body.ready section#home .dudes .mask.step-2 {
-  -webkit-animation: mask-play .4s steps(73) forwards .85s;
-          animation: mask-play .4s steps(73) forwards .85s;
+  -webkit-animation: mask-play .7s steps(73) forwards 2.2s;
+          animation: mask-play .7s steps(73) forwards 2.2s;
 }
 
 @-webkit-keyframes mask-play {
