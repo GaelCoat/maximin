@@ -17,7 +17,6 @@ webpackJsonp([0],[
 
 	  },
 
-
 	  renderParticle: function() {
 
 	    var scene = this.$el.find('#particles');
@@ -56,14 +55,18 @@ webpackJsonp([0],[
 
 	  render: function() {
 
-
 	    var that = this;
 
 	    return q.fcall(function() {
 
-	      that.renderParticle();
+	      return that.renderParticle();
+	    })
+	    .delay(1000)
+	    .then(function() {
 
-	    });
+	      that.$el.addClass('ready');
+	      return that;
+	    })
 
 	  },
 

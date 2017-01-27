@@ -1,3 +1,29 @@
+@font-face {
+  font-family: 'PierBlack';
+  src: url('./fonts/piersans-black-webfont.woff2') format('woff2'),
+       url('./fonts/piersans-black-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'PierBold';
+  src: url('./fonts/piersans-bold-webfont.woff2') format('woff2'),
+       url('./fonts/piersans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pier';
+  src: url('./fonts/piersans-regular-webfont.woff2') format('woff2'),
+       url('./fonts/piersans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 
 * {
   box-sizing: border-box;
@@ -19,7 +45,7 @@ body{
 
 #particles {
   height: 100vh;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
@@ -73,3 +99,147 @@ body{
   opacity: 0;
 }
 
+#title{
+  position: fixed;
+  left: 10vw;
+  top: 50vh;
+  font-size: 14vw;
+  color: #202023;
+  font-family: PierBlack;
+  text-transform: uppercase;
+  line-height: 14vw;
+  transform: translate(0, -3vw);
+  white-space: nowrap;
+  margin: 0;
+  transition: .3s;
+  opacity: 0;
+}
+
+body.ready #title{
+  transform: translate(0, -7vw);
+  animation: moveSlideshow 70s linear infinite;
+  opacity: 1;
+}
+
+#title span{
+  display: inline-block;
+}
+
+#title span:first-child{
+  margin-right: 15%;
+}
+
+
+@keyframes moveSlideshow {
+  100% {
+    transform: translate(-65%, -7vw);
+  }
+}
+
+section#home{
+  height: 95vh;
+  width: 100%;
+  position: relative;
+  z-index: 9;
+  text-align: center;
+  background-position: center;
+  background-size: auto 110%;
+  background-image: url(../img/shade.png);
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+body.ready section#home{
+  transition: .4s;
+  opacity: 1;
+}
+
+
+section#home:before{
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  content: "";
+}
+
+section#home .dudes{
+  display: inline-block;
+  vertical-align: middle;
+  height: 80%;
+  position: relative;
+  margin-left: 5%;
+}
+
+section#home .dudes img{
+  display: block;
+  height: 100%;
+  transform: rotate(90deg);
+}
+
+section#home .dudes .mask {
+  -webkit-mask: url(../img/sprite.png);
+          mask: url(../img/sprite.png);
+  -webkit-mask-size: 7400% 100%;
+          mask-size: 7400% 100%;
+  -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+section#home .dudes .mask.step-2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+body.ready section#home .dudes .mask.step-1 {
+  -webkit-animation: mask-play .4s steps(73) forwards .6s;
+          animation: mask-play .4s steps(73) forwards .6s;
+  opacity: 0;
+  transition: .4s;
+  transition-delay: 1.2s;
+}
+
+body.ready section#home .dudes .mask.step-2 {
+  -webkit-animation: mask-play .4s steps(73) forwards .85s;
+          animation: mask-play .4s steps(73) forwards .85s;
+}
+
+@-webkit-keyframes mask-play {
+  from {
+    -webkit-mask-position: 100% 0;
+            mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0% 0;
+            mask-position: 0% 0;
+  }
+}
+
+@keyframes mask-play {
+  from {
+    -webkit-mask-position: 100% 0;
+            mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0% 0;
+            mask-position: 0% 0;
+  }
+}
+
+
+/* ---------------------------------------------- */
+/* ----------------------------------------- BIO
+/* ---------------------------------------------- */
+section#bio{
+  position: relative;
+  z-index: 9;
+}
+
+section#bio .row{
+  background-color: #e32948;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 90vh;
+}
