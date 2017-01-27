@@ -120,7 +120,7 @@ header{
   transform: translate(0, -3vw);
   white-space: nowrap;
   margin: 0;
-  transition: .3s;
+  transition: 1s;
   opacity: 0;
 }
 
@@ -261,5 +261,53 @@ section#bio .row{
   background-color: #e32948;
   width: 80%;
   margin: 0 auto;
-  min-height: 90vh;
+  height: 90vh;
+  text-align: right;
+  position: relative;
+  padding: 0 10%;
 }
+
+section#bio .row img{
+  height: 95%;
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+}
+
+
+section#bio .col-text{
+  color: #fff;
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  font-family: Pier;
+  margin-top: -32px;
+}
+
+section#bio .col-text span{
+  margin-top: 28px;
+  display: block;
+  color: rgba(255,255,255,.45);
+}
+
+section#bio .col-text .each{
+  display: block;
+  opacity: 0;
+  -webkit-transform: translate(0, 32px);
+          transform: translate(0, 32px);
+  -webkit-transition: .33s;
+  transition: .33s;
+}
+
+section#bio .col-text .each{
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+section#bio .col-text .each:nth-child(1){ -webkit-transition-delay: .5s; transition-delay: .5s; }
+section#bio .col-text .each:nth-child(2){ -webkit-transition-delay: .6s; transition-delay: .6s; }
+section#bio .col-text .each:nth-child(3){ -webkit-transition-delay: .7s; transition-delay: .7s; }
+section#bio .col-text .each:nth-child(4){ -webkit-transition-delay: .8s; transition-delay: .8s; }
+section#bio .col-text .each:nth-child(5){ -webkit-transition-delay: .9s; transition-delay: .9s; }
