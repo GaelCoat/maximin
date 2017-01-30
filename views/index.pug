@@ -3,6 +3,7 @@ head
   meta(charset='UTF-8')
   title Le sel
   link(href="css/normalize.css", rel="stylesheet", type="text/css")
+  link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
   link(href="css/main.css", rel="stylesheet", type="text/css")
 body
   #particles
@@ -43,8 +44,43 @@ body
   section#video
     .row
       video#player(muted, loop, src="./img/video.mp4")
-      span Le meilleur<br/>Dribbleur de Ligue 1
+      i.fa.fa-play
+      span
+        | #AmazingDribbler
+        p Plus grand nombre de dribbles réussit en L1
+  section#news.loaded
+    .row
+      h2 News
+      #grid(data-columns)
+        .wrap
+          img(src='./img/temp/1.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/2.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/3.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/4.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/5.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/6.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/8.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/7.jpg')
+          .overlay
+        .wrap
+          img(src='./img/temp/10.jpg')
+          .overlay
 
+  include ./templates
 
 //- Webpack Bundles
 script(src='/vendor.bundle.js')
