@@ -24,25 +24,56 @@ body
       .col-text
         .each
           span Nom, âge & nationalité
-          p Florian Thauvin, 23 ans, France
+          p Allan Saint-Maximin, 19 ans, France
         .each
           span Taille & poids
-          p 1m79 - 70kg
+          p 1m73 - 67kg
         .each
           span Poste & club
-          p Attaquant - Olympique de Marseille
+          p Attaquant - SC Bastia
         .each
-          span Trophées (club et équipe de France)
-          p Finaliste de la coupe de France (Marseille, 2016)
-          p Champion du monde (Équipe de France U-20, 2013)
-          p Champion de Ligue 2 (Bastia, 2012)
+          span Parcours
+          p AS Saint-Etienne (2013-2015)
+          p Hanovre 96 (2015/2016)
+          p Bastia (2016/2017)
         .each
-          span Distinctions personnelles
-          p Olympien de l’année (Marseille, 2016)
-          p Meilleur espoir de Ligue 1 (Bastia, 2012/2013)
+          span Sélection nationale
+          p 20 séléctions (U20, U17, U16)
+          p 7 buts et 5 passes décisives
+  section#video
+    .row
+      video#player(muted, loop, src="./img/video.mp4")
+      span Le meilleur<br/>Dribbleur de Ligue 1
 
 
 //- Webpack Bundles
 script(src='/vendor.bundle.js')
 script(src='/app.bundle.js')
+//- script(async, src="https://www.youtube.com/iframe_api")
+//- script.
+//-   function onYouTubeIframeAPIReady() {
+//-   var player;
+//-   player = new YT.Player('player', {
+//-   videoId: 'CVeJFlLuzug',
+//-   width: 560,
+//-   height: 316,
+//-   playerVars: {
+//-   autoplay: 1,
+//-   controls: 0,
+//-   showinfo: 0,
+//-   modestbranding: 1,
+//-   loop: 1,
+//-   fs: 0,
+//-   cc_load_policy: 0,
+//-   iv_load_policy: 3,
+//-   autohide: 0
+//-   },
+//-   events: {
+//-   onReady: function(e) {
+//-   e.target.mute();
+//-   }
+//-   }
+//-   });
+//-   }
+
 

@@ -6,6 +6,18 @@ var Main = Backbone.View.extend({
 
   },
 
+  scroll: function() {
+
+    var scrollTop = $(window).scrollTop();
+    var viewportHeight = $(window).height();
+    var trigger = this.$el.find('#video').offset().top;
+    var video = this.$el.find('#player')
+
+    if (scrollTop + viewportHeight * 0.9 >= trigger) video.get(0).play();
+    else video.get(0).pause();
+    return this;
+  },
+
   renderParticle: function() {
 
     var scene = this.$el.find('#particles');
@@ -45,6 +57,8 @@ var Main = Backbone.View.extend({
   render: function() {
 
     var that = this;
+
+    $(window).scroll(this.scroll.bind(this));
 
     return q.fcall(function() {
 

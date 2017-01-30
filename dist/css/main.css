@@ -262,16 +262,18 @@ section#bio .row{
   width: 80%;
   margin: 0 auto;
   height: 90vh;
-  text-align: right;
+  text-align: center;
   position: relative;
   padding: 0 10%;
+  overflow: hidden;
 }
 
 section#bio .row img{
   height: 95%;
-  position: absolute;
-  left: 10%;
-  bottom: 0;
+  display: inline-block;
+  margin-top: 5%;
+  vertical-align: middle;
+  margin-right: 15%;
 }
 
 
@@ -311,3 +313,46 @@ section#bio .col-text .each:nth-child(2){ -webkit-transition-delay: .6s; transit
 section#bio .col-text .each:nth-child(3){ -webkit-transition-delay: .7s; transition-delay: .7s; }
 section#bio .col-text .each:nth-child(4){ -webkit-transition-delay: .8s; transition-delay: .8s; }
 section#bio .col-text .each:nth-child(5){ -webkit-transition-delay: .9s; transition-delay: .9s; }
+
+/* ---------------------------------------------- */
+/* ----------------------------------------- VIDEO
+/* ---------------------------------------------- */
+section#video{
+  position: relative;
+  z-index: 9;
+  margin-bottom: 5vw;
+}
+
+section#video .row{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+section#video .row:before{
+  content: "";
+  padding-top: 56.25%;
+  display: block;
+}
+
+section#video video#player{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+section#video span{
+  position: absolute;
+  left: -3vw;
+  top: 5vw;
+  color: #fff;
+  font-family: PierBold;
+  font-size: 50px;
+  line-height: 70px;
+  z-index: 9;
+  text-align: left;
+  text-shadow: 2px 9px 30px rgba(0,0,0,.2), 2px 3px 10px rgba(0,0,0,.3);
+}
