@@ -208,8 +208,8 @@ body.ready #home{
 #home .dudes .mask.step-2 {
   -webkit-mask: url(../img/sprite.png);
           mask: url(../img/sprite.png);
-  -webkit-mask-size: 7400% 100%;
-          mask-size: 7400% 100%;
+  -webkit-mask-size: 7500% 100%;
+          mask-size: 7500% 100%;
   -webkit-mask-position: 100% 0;
           mask-position: 100% 0;
   height: 100%;
@@ -231,8 +231,8 @@ body.ready #home .dudes .mask.step-1 {
 }
 
 body.ready #home .dudes .mask.step-2 {
-  -webkit-animation: mask-play .7s steps(73) forwards 2.2s;
-          animation: mask-play .7s steps(73) forwards 2.2s;
+  -webkit-animation: mask-play .7s steps(74) forwards 2.2s;
+          animation: mask-play .7s steps(74) forwards 2.2s;
 }
 
 @-webkit-keyframes mask-play {
