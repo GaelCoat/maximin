@@ -5,23 +5,24 @@ head
   link(href="css/normalize.css", rel="stylesheet", type="text/css")
   link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
   link(href="css/main.css", rel="stylesheet", type="text/css")
+  link(href="css/responsive.css", rel="stylesheet", type="text/css")
 body
   #particles
   h1#title
     span Allan Saint-Maximin
     span Allan Saint-Maximin
   header
-    img(src='./img/logo.png')
+    img(data-src='./img/logo.png')
   section#home
     .dudes
       .mask.step-1
-        img(src='./img/step-1.png')
+        img(data-src='./img/step-1.png')
       .mask.step-2
-        img(src='./img/step-2.png')
+        img(data-src='./img/step-2.png')
   section#bio
     .row
       .align
-      img(src='./img/bio.png')
+      img(data-src='./img/bio.png')
       .col-text
         .each
           span Nom, âge & nationalité
@@ -43,7 +44,7 @@ body
           p 7 buts et 5 passes décisives
   section#video
     .row
-      video#player(muted, loop, src="./img/video.mp4")
+      video#player(muted, loop, data-src="./img/video.mp4")
       i.fa.fa-play
       span
         | #AmazingDribbler
@@ -53,31 +54,31 @@ body
       h2 News
       #grid(data-columns)
         .wrap
-          img(src='./img/temp/1.jpg')
+          img(data-src='./img/temp/1.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/2.jpg')
+          img(data-src='./img/temp/2.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/3.jpg')
+          img(data-src='./img/temp/3.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/4.jpg')
+          img(data-src='./img/temp/4.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/5.jpg')
+          img(data-src='./img/temp/5.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/6.jpg')
+          img(data-src='./img/temp/6.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/8.jpg')
+          img(data-src='./img/temp/8.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/7.jpg')
+          img(data-src='./img/temp/7.jpg')
           .overlay
         .wrap
-          img(src='./img/temp/10.jpg')
+          img(data-src='./img/temp/10.jpg')
           .overlay
 
   include ./templates

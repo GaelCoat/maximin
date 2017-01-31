@@ -9,8 +9,8 @@ webpackJsonp([0],[
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(_, Backbone, $, q) {var Lightbox = __webpack_require__(10);
-	var Salvattore = __webpack_require__(9);
+	/* WEBPACK VAR INJECTION */(function(_, Backbone, $, q) {var Lightbox = __webpack_require__(9);
+	var Salvattore = __webpack_require__(10);
 
 	_.templateSettings = {
 	  interpolate: /\{\{(.+?)\}\}/g,
@@ -180,6 +180,38 @@ webpackJsonp([0],[
 
 	    this.renderParticle(this.$el.find('#particles'));
 	    setTimeout(this.generateParticles.bind(this), 300);
+	    return this;
+	  },
+
+	  preload: function() {
+
+	    var ready = [];
+
+	    this.$el.find('img').each(function(i) {
+
+	      var defer = q.defer();
+
+	      var $this = $(this);
+	      var url = $this.data('src');
+	      var img = new Image();
+	      img.src = url;
+	      img.onload = function() {
+
+	        console.log('...loaded');
+	        $this.attr('src', url).removeClass('preload');
+	        defer.resolve(url);
+	      };
+
+	      ready.push(defer.promise);
+	    });
+
+	    return ready;
+	  },
+
+	  loadVideo: function() {
+
+	    this.$el.find('video').attr('src', this.$el.find('video').data('src'));
+	    return this;
 	  },
 
 	  render: function() {
@@ -188,15 +220,19 @@ webpackJsonp([0],[
 
 	    $(window).scroll(this.scroll.bind(this));
 
-	    return q.fcall(function() {
+	    console.log('START', new Date());
 
-	      return that.generateParticles();
-	    })
-	    .delay(1000)
+	    return q.fcall(that.preload.bind(that))
+	    .all()
 	    .then(function() {
 
+	      console.log('END', new Date());
+
 	      that.$el.addClass('ready');
-	      return that;
+	      return [
+	        that.loadVideo(),
+	        that.generateParticles()
+	      ]
 	    })
 
 	  },
@@ -207,7 +243,7 @@ webpackJsonp([0],[
 	View.render();
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4), __webpack_require__(5)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(3), __webpack_require__(4), __webpack_require__(5)))
 
 /***/ },
 /* 2 */,
@@ -218,6 +254,67 @@ webpackJsonp([0],[
 /* 7 */,
 /* 8 */,
 /* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {
+	module.exports = Backbone.View.extend({
+
+	  events: {
+	    'click .close': 'close'
+	  },
+
+	  initialize: function(params) {
+
+	    this.tpl = _.template($('#tpl-img-popup').html());
+	    this.url = params.url;
+	  },
+
+	  render: function() {
+
+	    this.$el.html(this.tpl({
+	      url: this.url
+	    }));
+
+	    $('#news').append(this.$el);
+
+	    return this.show();
+	  },
+
+	  setUrl: function(url) {
+
+	    this.url = url;
+	    this.$el.find('img').attr('src', this.url);
+	    return this.show();
+	  },
+
+	  show: function() {
+
+	    this.$el.show(0).find('.veil').addClass('ready');
+	    return this;
+	  },
+
+	  close: function() {
+
+	    this.$el.find('.veil').removeClass('ready');
+	    this.$el.hide(0);
+	    $('body').removeClass('modal-open');
+	    return this;
+	  },
+
+	  reset: function() {
+
+	    //this.undelegateEvents();
+	    this.remove();
+	  }
+
+	})
+
+
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4)))
+
+/***/ },
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -824,67 +921,6 @@ webpackJsonp([0],[
 	return salvattore;
 	}));
 
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {
-	module.exports = Backbone.View.extend({
-
-	  events: {
-	    'click .close': 'close'
-	  },
-
-	  initialize: function(params) {
-
-	    this.tpl = _.template($('#tpl-img-popup').html());
-	    this.url = params.url;
-	  },
-
-	  render: function() {
-
-	    this.$el.html(this.tpl({
-	      url: this.url
-	    }));
-
-	    $('#news').append(this.$el);
-
-	    return this.show();
-	  },
-
-	  setUrl: function(url) {
-
-	    this.url = url;
-	    this.$el.find('img').attr('src', this.url);
-	    return this.show();
-	  },
-
-	  show: function() {
-
-	    this.$el.show(0).find('.veil').addClass('ready');
-	    return this;
-	  },
-
-	  close: function() {
-
-	    this.$el.find('.veil').removeClass('ready');
-	    this.$el.hide(0);
-	    $('body').removeClass('modal-open');
-	    return this;
-	  },
-
-	  reset: function() {
-
-	    //this.undelegateEvents();
-	    this.remove();
-	  }
-
-	})
-
-
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(3), __webpack_require__(4)))
 
 /***/ }
 ]);

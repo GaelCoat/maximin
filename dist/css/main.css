@@ -37,6 +37,11 @@ body{
   text-align: center;
 }
 
+body.modal-open{
+  overflow: hidden;
+  padding-right: 17px;
+}
+
 .align{
   display: inline-block;
   vertical-align: middle;
@@ -148,7 +153,7 @@ body.ready #title{
   }
 }
 
-section#home{
+#home{
   height: 95vh;
   width: 100%;
   position: relative;
@@ -159,22 +164,23 @@ section#home{
   background-image: url(../img/shade.png);
   background-repeat: no-repeat;
   opacity: 0;
+  overflow: hidden;
 }
 
-body.ready section#home{
+body.ready #home{
   transition: .4s;
   opacity: 1;
 }
 
 
-section#home:before{
+#home:before{
   height: 100%;
   display: inline-block;
   vertical-align: middle;
   content: "";
 }
 
-section#home .dudes{
+#home .dudes{
   display: inline-block;
   vertical-align: middle;
   height: 80%;
@@ -182,13 +188,13 @@ section#home .dudes{
   margin-left: 5%;
 }
 
-section#home .dudes img{
+#home .dudes img{
   display: block;
   height: 100%;
   transform: rotate(90deg);
 }
 
-section#home .dudes .mask.step-1 {
+#home .dudes .mask.step-1 {
   -webkit-mask: url(../img/sprite2.png);
           mask: url(../img/sprite2.png);
   -webkit-mask-size: 7100% 100%;
@@ -199,7 +205,7 @@ section#home .dudes .mask.step-1 {
   transform: rotate(-90deg);
 }
 
-section#home .dudes .mask.step-2 {
+#home .dudes .mask.step-2 {
   -webkit-mask: url(../img/sprite.png);
           mask: url(../img/sprite.png);
   -webkit-mask-size: 7400% 100%;
@@ -210,13 +216,13 @@ section#home .dudes .mask.step-2 {
   transform: rotate(-90deg);
 }
 
-section#home .dudes .mask.step-2 {
+#home .dudes .mask.step-2 {
   position: absolute;
   left: 0;
   top: 0;
 }
 
-body.ready section#home .dudes .mask.step-1 {
+body.ready #home .dudes .mask.step-1 {
   -webkit-animation: mask-play 1s steps(70) forwards 1.6s;
           animation: mask-play 1s steps(70) forwards 1.6s;
   opacity: 0;
@@ -224,7 +230,7 @@ body.ready section#home .dudes .mask.step-1 {
   transition-delay: 2.8s;
 }
 
-body.ready section#home .dudes .mask.step-2 {
+body.ready #home .dudes .mask.step-2 {
   -webkit-animation: mask-play .7s steps(73) forwards 2.2s;
           animation: mask-play .7s steps(73) forwards 2.2s;
 }
@@ -255,28 +261,27 @@ body.ready section#home .dudes .mask.step-2 {
 /* ---------------------------------------------- */
 /* ----------------------------------------- BIO
 /* ---------------------------------------------- */
-section#bio{
+#bio{
   position: relative;
   z-index: 9;
 }
 
-section#bio .row{
+#bio .row{
   background-color: #e32948;
   width: 80%;
   margin: 0 auto;
   height: 90vh;
-  text-align: center;
+  text-align: right;
   position: relative;
   padding: 0 10%;
   overflow: hidden;
 }
 
-section#bio .row img{
+#bio .row img{
   height: 95%;
-  display: inline-block;
-  margin-top: 5%;
-  vertical-align: middle;
-  margin-right: 15%;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
 
   -webkit-mask: url(../img/sprite3.png);
           mask: url(../img/sprite3.png);
@@ -286,12 +291,12 @@ section#bio .row img{
           mask-position: 100% 0;
 }
 
-section#bio.loaded .row img{
+#bio.loaded .row img{
   -webkit-animation: mask-play 1.4s steps(29) forwards;
           animation: mask-play 1.4s steps(29) forwards;
 }
 
-section#bio .col-text{
+#bio .col-text{
   color: #fff;
   font-size: 20px;
   display: inline-block;
@@ -301,13 +306,13 @@ section#bio .col-text{
   margin-top: -32px;
 }
 
-section#bio .col-text span{
+#bio .col-text span{
   margin-top: 28px;
   display: block;
   color: rgba(255,255,255,.45);
 }
 
-section#bio .col-text .each{
+#bio .col-text .each{
   display: block;
   opacity: 0;
   -webkit-transform: translate(0, 32px);
@@ -316,33 +321,33 @@ section#bio .col-text .each{
   transition: .33s;
 }
 
-section#bio.loaded .col-text .each{
+#bio.loaded .col-text .each{
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 
-section#bio .col-text .each:nth-child(2){ -webkit-transition-delay: .1s; transition-delay: .1s; }
-section#bio .col-text .each:nth-child(3){ -webkit-transition-delay: .2s; transition-delay: .2s; }
-section#bio .col-text .each:nth-child(4){ -webkit-transition-delay: .3s; transition-delay: .3s; }
-section#bio .col-text .each:nth-child(5){ -webkit-transition-delay: .4s; transition-delay: .4s; }
+#bio .col-text .each:nth-child(2){ -webkit-transition-delay: .1s; transition-delay: .1s; }
+#bio .col-text .each:nth-child(3){ -webkit-transition-delay: .2s; transition-delay: .2s; }
+#bio .col-text .each:nth-child(4){ -webkit-transition-delay: .3s; transition-delay: .3s; }
+#bio .col-text .each:nth-child(5){ -webkit-transition-delay: .4s; transition-delay: .4s; }
 
 /* ---------------------------------------------- */
 /* ----------------------------------------- VIDEO
 /* ---------------------------------------------- */
-section#video{
+#video{
   position: relative;
   z-index: 9;
 }
 
-section#video .row{
+#video .row{
   width: 80%;
   margin: 0 auto;
   text-align: center;
   position: relative;
 }
 
-section#video.paused .row:after{
+#video.paused .row:after{
   position: absolute;
   left: 0;
   right: 0;
@@ -352,13 +357,13 @@ section#video.paused .row:after{
   background-color: rgba(10,10,10,.2);
 }
 
-section#video .row:before{
+#video .row:before{
   content: "";
   padding-top: 56.25%;
   display: block;
 }
 
-section#video video#player{
+#video video#player{
   position: absolute;
   left: 0;
   top: 0;
@@ -366,7 +371,7 @@ section#video video#player{
   height: 100%;
 }
 
-section#video span{
+#video span{
   position: absolute;
   left: 3vw;
   top: 2vw;
@@ -379,7 +384,7 @@ section#video span{
   text-shadow: 2px 9px 30px rgba(0,0,0,.2), 2px 3px 10px rgba(0,0,0,.3);
 }
 
-section#video p{
+#video p{
   color: #b9b9b9;
   font-family: Pier;
   margin-left: 4px;
@@ -387,7 +392,7 @@ section#video p{
   line-height: 26px;
 }
 
-section#video i{
+#video i{
   position: absolute;
   left: 50%;
   top: 50%;
@@ -402,7 +407,7 @@ section#video i{
   text-shadow: 2px 9px 30px rgba(0,0,0,.2), 2px 3px 10px rgba(0,0,0,.3);
 }
 
-section#video.paused i{
+#video.paused i{
   opacity: 1;
   transform: scale(.9);
 }

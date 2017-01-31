@@ -1,0 +1,129 @@
+@media screen and (max-width: 1440px){
+
+  #bio .col-text {
+    font-size: 18px;
+  }
+
+  #video span {
+    font-size: 35px;
+    line-height: 50px;
+  }
+
+  #video p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+
+  header{
+    left: 5%;
+    right: 5%;
+  }
+
+  #bio .row img {
+    left: 5%;
+  }
+
+  #video .row,
+  #news .row,
+  #bio .row {
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width: 1120px) {
+
+
+  #bio .col-text {
+    font-size: 16px;
+  }
+
+}
+
+@media only screen and (orientation: portrait) {
+
+  body.modal-open {
+    padding-right: 0;
+  }
+
+  #video .row,
+  #news .row,
+  #bio .row {
+    width: 100%;
+  }
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ HOME
+  /* ---------------------------------------------------------- */
+
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ BIO
+  /* ---------------------------------------------------------- */
+  #bio .col-text {
+    font-size: 50px;
+    position: relative;
+    z-index: 2;
+    text-align: right;
+  }
+
+  #bio .col-text span {
+    margin-top: 70px;
+  }
+
+  #bio .row img {
+    left: -46%;
+  }
+
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ NEWS
+  /* ---------------------------------------------------------- */
+  #news .row h2 {
+    font-size: 80px;
+  }
+
+  #news .row h2:before {
+    height: 4px;
+    width: 80px;
+    margin-left: -40px;
+  }
+
+  #news .row h2:after {
+    content: none;
+  }
+
+  #news #grid {
+    padding: 0 6px;
+  }
+
+  #news #grid .column {
+    width: 50%;
+  }
+
+  #news #grid[data-columns]::before {
+    content: '2 .column.size-1of2';
+  }
+
+  #news #grid .column .wrap {
+    padding: 6px;
+  }
+
+  .veil .modal img {
+    max-height: 100vh;
+    max-width: 95vw;
+  }
+
+  #video span {
+    font-size: 65px;
+    line-height: 70px;
+  }
+
+  #video p {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+}

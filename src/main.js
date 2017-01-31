@@ -169,6 +169,38 @@ var Main = Backbone.View.extend({
 
     this.renderParticle(this.$el.find('#particles'));
     setTimeout(this.generateParticles.bind(this), 300);
+    return this;
+  },
+
+  preload: function() {
+
+    var ready = [];
+
+    this.$el.find('img').each(function(i) {
+
+      var defer = q.defer();
+
+      var $this = $(this);
+      var url = $this.data('src');
+      var img = new Image();
+      img.src = url;
+      img.onload = function() {
+
+        console.log('...loaded');
+        $this.attr('src', url).removeClass('preload');
+        defer.resolve(url);
+      };
+
+      ready.push(defer.promise);
+    });
+
+    return ready;
+  },
+
+  loadVideo: function() {
+
+    this.$el.find('video').attr('src', this.$el.find('video').data('src'));
+    return this;
   },
 
   render: function() {
@@ -177,15 +209,19 @@ var Main = Backbone.View.extend({
 
     $(window).scroll(this.scroll.bind(this));
 
-    return q.fcall(function() {
+    console.log('START', new Date());
 
-      return that.generateParticles();
-    })
-    .delay(1000)
+    return q.fcall(that.preload.bind(that))
+    .all()
     .then(function() {
 
+      console.log('END', new Date());
+
       that.$el.addClass('ready');
-      return that;
+      return [
+        that.loadVideo(),
+        that.generateParticles()
+      ]
     })
 
   },
