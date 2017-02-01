@@ -12,6 +12,10 @@
   #video p {
     font-size: 18px;
   }
+
+  #home h1 {
+    font-size: 8vw;
+  }
 }
 
 @media screen and (max-width: 1320px) {

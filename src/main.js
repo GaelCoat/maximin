@@ -186,7 +186,7 @@ var Main = Backbone.View.extend({
   generateParticles: function() {
 
     this.renderParticle(this.$el.find('#particles'));
-    setTimeout(this.generateParticles.bind(this), 300);
+    setTimeout(this.generateParticles.bind(this), 400);
     return this;
   },
 
@@ -239,6 +239,8 @@ var Main = Backbone.View.extend({
   // ------------------------------------------------
   renderTrianglify: function() {
 
+    this.$el.find('canvas').remove();
+
     var pattern = Trianglify({
       width: window.innerWidth,
       height: window.innerHeight,
@@ -266,7 +268,11 @@ var Main = Backbone.View.extend({
 
     $(window).scroll(this.scroll.bind(this));
     $(window).mousemove(_.throttle(function(e) { Backbone.trigger('mousemove', e); }, 65));
-    $(window).resize(_.throttle(function(e) { Backbone.trigger('resize', e); }, 300));
+    $(window).resize(_.throttle(function(e) {
+
+      Backbone.trigger('resize', e);
+      return that.renderTrianglify();
+    }, 300));
 
     return q.fcall(that.preload.bind(that))
     .all()

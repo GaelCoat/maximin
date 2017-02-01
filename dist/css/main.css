@@ -202,10 +202,11 @@ body.ready #home figure{
   display: inline-block;
   vertical-align: middle;
   margin-left: -7%;
+  height: 110%;
 }
 
 #home h1{
-  font-size: 130px;
+  font-size: 7vw;
   color: #fff;
   font-family: Summer;
   text-align: center;
