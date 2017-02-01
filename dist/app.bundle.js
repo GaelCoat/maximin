@@ -276,6 +276,19 @@ webpackJsonp([0],[
 	    });
 	  },
 
+	  setSizes: function() {
+
+	    var that = this;
+
+	    this.$el.find('.setSize').each(function() {
+
+	      $(this).height($(this).height());
+
+	    });
+
+	    return this;
+	  },
+
 	  render: function() {
 
 	    var that = this;
@@ -297,6 +310,8 @@ webpackJsonp([0],[
 
 	        that.$el.addClass('ready').removeClass('modal-open');
 	      });
+
+	      if (isMobile) that.setSizes();
 
 	      return [
 	        that.renderTrianglify(),

@@ -265,6 +265,19 @@ var Main = Backbone.View.extend({
     });
   },
 
+  setSizes: function() {
+
+    var that = this;
+
+    this.$el.find('.setSize').each(function() {
+
+      $(this).height($(this).height());
+
+    });
+
+    return this;
+  },
+
   render: function() {
 
     var that = this;
@@ -286,6 +299,8 @@ var Main = Backbone.View.extend({
 
         that.$el.addClass('ready').removeClass('modal-open');
       });
+
+      if (isMobile) that.setSizes();
 
       return [
         that.renderTrianglify(),
