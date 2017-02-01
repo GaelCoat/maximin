@@ -179,8 +179,8 @@ i.particle.ready {
 
 body.ready #home figure{
   opacity: 1;
-  -webkit-animation: mask-play 1s steps(70) forwards 2.3s;
-          animation: mask-play 1s steps(70) forwards 2.3s;
+  -webkit-animation: mask-play 1s steps(70) forwards 3.7s;
+          animation: mask-play 1s steps(70) forwards 3.7s;
 }
 
 #home figure img{
@@ -214,8 +214,8 @@ body.ready #home figure{
 
 body.ready #home h1{
   opacity: 1;
-  -webkit-animation: mask-play 1.8s steps(29) forwards 1s;
-          animation: mask-play 1.8s steps(29) forwards 1s;
+  -webkit-animation: mask-play 2.5s steps(29) forwards 1s;
+          animation: mask-play 2.5s steps(29) forwards 1s;
 }
 
 #home h1 span{
@@ -270,13 +270,13 @@ body.ready #home h1{
 #home aside a.icon > i{
   transform: scale(.4);
   transition: .33s;
-  transition-delay: 3s;
+  transition-delay: 4.2s;
   opacity: 0;
   display: block;
 }
 
-#home aside a.icon:nth-child(2) > i { transition-delay: 3.1s; }
-#home aside a.icon:nth-child(3) > i { transition-delay: 3.2s; }
+#home aside a.icon:nth-child(2) > i { transition-delay: 4.3s; }
+#home aside a.icon:nth-child(3) > i { transition-delay: 4.4s; }
 
 body.ready #home aside a.icon > i{
   transform: scale(1);
@@ -753,4 +753,8 @@ body.ready .spinner {
     transform: scale(1.0);
     opacity: 0;
   }
+}
+
+.mobile{
+  display: none !important;
 }

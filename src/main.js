@@ -231,6 +231,8 @@ var Main = Backbone.View.extend({
   // ------------------------------------------------
   loadVideo: function() {
 
+    if (isMobile) this.$el.find('video').attr('controls','true');
+
     this.$el.find('video').attr('src', this.$el.find('video').data('src'));
     return this;
   },

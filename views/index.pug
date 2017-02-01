@@ -10,32 +10,32 @@ body.modal-open
   #particles
   section#home.setSize
     figure
-      img.repulse(data-pulse='-1.5', data-src='./img/body.png')
+      img.repulse(data-pulse='-1', data-src='./img/body.png')
     h1
       .each
-        span.repulse(data-pulse='3') Allan
+        span.repulse(data-pulse='2') Allan
         br
-        span.repulse(data-pulse='2') St-Maximin
+        span.repulse(data-pulse='1') St-Maximin
       .each.abs
-        span.repulse(data-pulse='3.5') Allan
+        span.repulse(data-pulse='2.5') Allan
         br
-        span.repulse(data-pulse='2.5') St-Maximin
+        span.repulse(data-pulse='1.5') St-Maximin
       .each.abs
-        span.repulse(data-pulse='3.5') Allan
+        span.repulse(data-pulse='2.5') Allan
         br
-        span.repulse(data-pulse='2.5') St-Maximin
+        span.repulse(data-pulse='1.5') St-Maximin
     aside
       a.icon(href="https://www.facebook.com/asaintmaximinofficial/?fref=ts", target='_blank')
         i
           img(data-src='./img/icons/facebook-logo.svg')
           img.repulse.ana.blue(data-pulse='0.5', data-src='./img/icons/facebook-logo-blue.svg')
           img.repulse.ana.red(data-pulse='0.5', data-src='./img/icons/facebook-logo-red.svg')
-      a.icon(href="https://www.instagram.com/st_maximin/", target='_blank')
+      a.icon(href="https://twitter.com/asaintmaximin", target='_blank')
         i
           img(data-src='./img/icons/twitter-logo.svg')
           img.repulse.ana.blue(data-pulse='0.5', data-src='./img/icons/twitter-logo-blue.svg')
           img.repulse.ana.red(data-pulse='0.5', data-src='./img/icons/twitter-logo-red.svg')
-      a.icon(href="https://twitter.com/asaintmaximin", target='_blank')
+      a.icon(href="https://www.instagram.com/st_maximin/", target='_blank')
         i
           img(data-src='./img/icons/instagram-logo.svg')
           img.repulse.ana.blue(data-pulse='0.5', data-src='./img/icons/instagram-logo-blue.svg')
@@ -64,12 +64,15 @@ body.modal-open
           p 20 séléctions (U20, U17, U16)
           p 7 buts et 5 passes décisives
   section#video
+    span.mobile
+      | #AmazingDribbler
+      p Plus grand nombre de dribbles réussit en L1
     .row
-      video#player(muted, loop, data-src="./img/video.mp4")
-      i.fa.fa-play
-      span
+      span.notMobile
         | #AmazingDribbler
         p Plus grand nombre de dribbles réussit en L1
+      video#player(muted, loop, data-src="./img/video.mp4")
+      i.fa.fa-play
   section#news.loaded
     .row
       h2 News
