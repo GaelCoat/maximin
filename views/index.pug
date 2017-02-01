@@ -6,7 +6,7 @@ head
   link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
   link(href="css/main.css", rel="stylesheet", type="text/css")
   link(href="css/responsive.css", rel="stylesheet", type="text/css")
-body
+body.modal-open
   #particles
   section#home
     figure
@@ -24,13 +24,22 @@ body
         span.repulse(data-pulse='3.5') Allan
         br
         span.repulse(data-pulse='2.5') St-Maximin
-    //-aside
-      i.icon
-        img(data-src='./img/icons/facebook-logo.svg')
-      i.icon
-        img(data-src='./img/icons/twitter-logo.svg')
-      i.icon
-        img(data-src='./img/icons/instagram-logo.svg')
+    aside
+      a.icon(href="https://www.facebook.com/asaintmaximinofficial/?fref=ts", target='_blank')
+        i
+          img(data-src='./img/icons/facebook-logo.svg')
+          img.repulse.ana.blue(data-pulse='0.5', data-src='./img/icons/facebook-logo-blue.svg')
+          img.repulse.ana.red(data-pulse='0.5', data-src='./img/icons/facebook-logo-red.svg')
+      a.icon(href="https://www.instagram.com/st_maximin/", target='_blank')
+        i
+          img(data-src='./img/icons/twitter-logo.svg')
+          img.repulse.ana.blue(data-pulse='0.5', data-src='./img/icons/twitter-logo-blue.svg')
+          img.repulse.ana.red(data-pulse='0.5', data-src='./img/icons/twitter-logo-red.svg')
+      a.icon(href="https://twitter.com/asaintmaximin", target='_blank')
+        i
+          img(data-src='./img/icons/instagram-logo.svg')
+          img.repulse.ana.blue(data-pulse='0.5', data-src='./img/icons/instagram-logo-blue.svg')
+          img.repulse.ana.red(data-pulse='0.5', data-src='./img/icons/instagram-logo-red.svg')
   section#bio
     .row
       .align
@@ -94,6 +103,7 @@ body
           .overlay
   #loader
     .align
+    .spinner
     span.percent 0%
   include ./templates
 

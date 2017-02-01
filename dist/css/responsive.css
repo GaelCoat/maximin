@@ -16,6 +16,14 @@
   #home h1 {
     font-size: 8vw;
   }
+
+  #home aside a.icon img {
+    width: 70px;
+  }
+
+  #home aside {
+    bottom: 3vw;
+  }
 }
 
 @media screen and (max-width: 1320px) {
@@ -61,6 +69,53 @@
   /* ---------------------------------------------------------- */
   /* ------------------------------------------ HOME
   /* ---------------------------------------------------------- */
+  #home figure img {
+    margin-left: -30%;
+  }
+
+  #home h1 {
+    font-size: 17vw;
+    padding: 0;
+    mask: none;
+    -webkit-mask: none;
+    margin-left: -7vw;
+  }
+
+  #home h1 .abs {
+    top: 0;
+  }
+
+  #home h1 .abs:nth-child(3) {
+    margin-right: -10px;
+    margin-top: 10px;
+  }
+
+  #home h1 .abs:nth-child(2) {
+    margin-left: -10px;
+    margin-top: -10px;
+  }
+
+  #home aside a.icon img {
+    width: 160px;
+  }
+
+  #home aside {
+    bottom: 10vw;
+  }
+
+  #home aside a.icon:nth-child(2) {
+    margin: 0 7vw;
+  }
+
+  #home aside a.icon img.ana.blue {
+    margin-left: -7px;
+    margin-top: -7px;
+  }
+
+  #home aside a.icon img.ana.red {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
 
 
   /* ---------------------------------------------------------- */

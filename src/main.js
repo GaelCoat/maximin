@@ -2,6 +2,7 @@ var Lightbox = require('./views/lightbox');
 var Repulsed = require('./views/repulsed');
 var Salvattore = require('salvattore');
 var Trianglify = require('trianglify');
+var isMobile = require('./libs/isMobile');
 
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g,
@@ -62,8 +63,8 @@ var Main = Backbone.View.extend({
     var tuile = $(e.currentTarget).parent();
 
     tuile.css({
-      'transform': 'perspective(0) rotateX(0deg) rotateY(0deg) ',
-      '-webkit-transform': 'perspective(0) rotateX(0deg) rotateY(0deg) ',
+      'transform': 'none',
+      '-webkit-transform': 'none',
       'transition': '.44s',
       '-webkit-transition': '.44s'
     })
@@ -254,6 +255,8 @@ var Main = Backbone.View.extend({
 
   initRepulse: function () {
 
+    if (isMobile) return this;
+
     this.$el.find('.repulse').each(function() {
 
       var offset = $(this).data('pulse');
@@ -279,9 +282,9 @@ var Main = Backbone.View.extend({
     .then(function() {
 
       // Fin du loader
-      that.$el.find('#loader').delay(800).fadeOut(400, function() {
+      that.$el.find('#loader').delay(1000).fadeOut(400, function() {
 
-        that.$el.addClass('ready');
+        that.$el.addClass('ready').removeClass('modal-open');
       });
 
       return [
