@@ -8,17 +8,22 @@ head
   link(href="css/responsive.css", rel="stylesheet", type="text/css")
 body
   #particles
-  h1#title
-    span Allan Saint-Maximin
-    span Allan Saint-Maximin
-  header
-    img(data-src='./img/logo.png')
   section#home
-    .dudes
-      .mask.step-1
-        img(data-src='./img/step-1.png')
-      .mask.step-2
-        img(data-src='./img/step-2.png')
+    figure
+      img.repulse(data-pulse='-1.5', data-src='./img/body.png')
+    h1
+      .each
+        span.repulse(data-pulse='4') Allan
+        br
+        span.repulse(data-pulse='3') St-Maximin
+      .each.abs
+        span.repulse(data-pulse='4.5') Allan
+        br
+        span.repulse(data-pulse='3.5') St-Maximin
+      .each.abs
+        span.repulse(data-pulse='4.5') Allan
+        br
+        span.repulse(data-pulse='3.5') St-Maximin
   section#bio
     .row
       .align
@@ -80,37 +85,12 @@ body
         .wrap
           img(data-src='./img/temp/10.jpg')
           .overlay
-
+  #loader
+    .align
+    span.percent 0%
   include ./templates
 
 //- Webpack Bundles
 script(src='/vendor.bundle.js')
 script(src='/app.bundle.js')
-//- script(async, src="https://www.youtube.com/iframe_api")
-//- script.
-//-   function onYouTubeIframeAPIReady() {
-//-   var player;
-//-   player = new YT.Player('player', {
-//-   videoId: 'CVeJFlLuzug',
-//-   width: 560,
-//-   height: 316,
-//-   playerVars: {
-//-   autoplay: 1,
-//-   controls: 0,
-//-   showinfo: 0,
-//-   modestbranding: 1,
-//-   loop: 1,
-//-   fs: 0,
-//-   cc_load_policy: 0,
-//-   iv_load_policy: 3,
-//-   autohide: 0
-//-   },
-//-   events: {
-//-   onReady: function(e) {
-//-   e.target.mute();
-//-   }
-//-   }
-//-   });
-//-   }
-
 

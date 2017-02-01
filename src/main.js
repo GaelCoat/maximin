@@ -1,5 +1,7 @@
 var Lightbox = require('./views/lightbox');
+var Repulsed = require('./views/repulsed');
 var Salvattore = require('salvattore');
+var Trianglify = require('trianglify');
 
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g,
@@ -11,7 +13,6 @@ var Main = Backbone.View.extend({
 
   events: {
     'click #video': 'togglePlay',
-    //'mousemove #news .wrap': 'fluze',
     'mousemove #news .overlay': 'sweg',
     'mouseleave #news .overlay': 'unsweg',
     'click #news .wrap': 'newLightbox',
@@ -25,12 +26,9 @@ var Main = Backbone.View.extend({
 
   },
 
-  fluze: _.throttle(function(e) {
-
-    var container = $(e.currentTarget).find('.overlay');
-    return this.renderParticle(container, 'white');
-  }, 300),
-
+  // ------------------------------------------------
+  // Render perspective on instagram tiles
+  // ------------------------------------------------
   sweg: function(e) {
 
     var tuile = $(e.currentTarget).parent();
@@ -56,6 +54,9 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  // ------------------------------------------------
+  // Remove perspective on instagram tiles
+  // ------------------------------------------------
   unsweg: function(e) {
 
     var tuile = $(e.currentTarget).parent();
@@ -69,6 +70,9 @@ var Main = Backbone.View.extend({
 
   },
 
+  // ------------------------------------------------
+  // Handle Video state
+  // ------------------------------------------------
   togglePlay: function() {
 
     var video = this.$el.find('#player');
@@ -90,6 +94,9 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  // ------------------------------------------------
+  // Handle onScroll shite
+  // ------------------------------------------------
   scroll: function() {
 
     var scrollTop = $(window).scrollTop();
@@ -97,6 +104,9 @@ var Main = Backbone.View.extend({
     var triggerTop = this.$el.find('#video').offset().top;
     var triggerBot = this.$el.find('#video').offset().top + this.$el.find('#video').height();
     var video = this.$el.find('#player');
+
+    if (scrollTop >= viewportHeight*0.8) Backbone.trigger('repulse:lock');
+    else Backbone.trigger('repulse:unlock');
 
     // Bio
     if (scrollTop >= viewportHeight/2) this.$el.find('#bio').addClass('loaded');
@@ -116,8 +126,10 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  // ------------------------------------------------
+  // Picture popup
+  // ------------------------------------------------
   newLightbox: function(e) {
-
 
     var url = this.$el.find(e.currentTarget).find('img').attr('src');
 
@@ -130,6 +142,9 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  // ------------------------------------------------
+  // Render 1 particle
+  // ------------------------------------------------
   renderParticle: function(container, color) {
 
     var scene = container;
@@ -165,6 +180,9 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  // ------------------------------------------------
+  // Generate background particles
+  // ------------------------------------------------
   generateParticles: function() {
 
     this.renderParticle(this.$el.find('#particles'));
@@ -172,9 +190,16 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  // ------------------------------------------------
+  // Preload all pictures, return percentage
+  // ------------------------------------------------
   preload: function() {
 
+    var that = this;
     var ready = [];
+
+    var total = this.$el.find('img').length;
+    var percent = 0;
 
     this.$el.find('img').each(function(i) {
 
@@ -186,7 +211,10 @@ var Main = Backbone.View.extend({
       img.src = url;
       img.onload = function() {
 
-        console.log('...loaded');
+        percent += 100/total;
+
+        that.$el.find('#loader span').text(Math.round(percent)+'%');
+
         $this.attr('src', url).removeClass('preload');
         defer.resolve(url);
       };
@@ -197,10 +225,39 @@ var Main = Backbone.View.extend({
     return ready;
   },
 
+  // ------------------------------------------------
+  // Start loading the video
+  // ------------------------------------------------
   loadVideo: function() {
 
     this.$el.find('video').attr('src', this.$el.find('video').data('src'));
     return this;
+  },
+
+  // ------------------------------------------------
+  // Generate the Triangle canvas
+  // ------------------------------------------------
+  renderTrianglify: function() {
+
+    var pattern = Trianglify({
+      width: window.innerWidth,
+      height: window.innerHeight,
+      cell_size: 150,
+      x_colors: ['#000000', '#232323', '#050505']
+    });
+
+    this.$el.prepend(pattern.canvas());
+    return this;
+  },
+
+  initRepulse: function () {
+
+    this.$el.find('.repulse').each(function() {
+
+      var offset = $(this).data('pulse');
+      var View = new Repulsed({el: $(this), offset: offset});
+      View.render();
+    });
   },
 
   render: function() {
@@ -208,19 +265,24 @@ var Main = Backbone.View.extend({
     var that = this;
 
     $(window).scroll(this.scroll.bind(this));
-
-    console.log('START', new Date());
+    $(window).mousemove(_.throttle(function(e) { Backbone.trigger('mousemove', e); }, 65));
+    $(window).resize(_.throttle(function(e) { Backbone.trigger('resize', e); }, 300));
 
     return q.fcall(that.preload.bind(that))
     .all()
     .then(function() {
 
-      console.log('END', new Date());
+      // Fin du loader
+      that.$el.find('#loader').delay(800).fadeOut(400, function() {
 
-      that.$el.addClass('ready');
+        that.$el.addClass('ready');
+      });
+
       return [
-        that.loadVideo(),
-        that.generateParticles()
+        that.renderTrianglify(),
+        that.generateParticles(),
+        that.initRepulse(),
+        that.loadVideo()
       ]
     })
 

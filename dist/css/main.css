@@ -6,6 +6,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Summer';
+  src: url('./fonts/summerhearts-regular-webfont.woff2') format('woff2'),
+       url('./fonts/summerhearts-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: 'PierBold';
@@ -55,6 +62,38 @@ header{
   top: 0;
   padding-top: 5vw;
   text-align: left;
+}
+
+canvas{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+}
+
+body.ready canvas{
+  opacity: 1;
+  transition: .6s;
+}
+
+#loader{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #1a191a;
+  z-index: 99;
+  text-align: center;
+}
+
+#loader span{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+  color: #fff;
 }
 
 #particles {
@@ -116,42 +155,6 @@ i.particle.ready {
   opacity: 0;
 }
 
-#title{
-  position: fixed;
-  left: 10vw;
-  top: 50vh;
-  font-size: 14vw;
-  color: #202023;
-  font-family: PierBlack;
-  text-transform: uppercase;
-  line-height: 14vw;
-  transform: translate(0, -3vw);
-  white-space: nowrap;
-  margin: 0;
-  transition: 1s;
-  opacity: 0;
-}
-
-body.ready #title{
-  transform: translate(0, -7vw);
-  animation: moveSlideshow 60s linear infinite;
-  opacity: 1;
-}
-
-#title span{
-  display: inline-block;
-}
-
-#title span:first-child{
-  margin-right: 15%;
-}
-
-
-@keyframes moveSlideshow {
-  100% {
-    transform: translate(-65%, -7vw);
-  }
-}
 
 #home{
   height: 95vh;
@@ -159,81 +162,110 @@ body.ready #title{
   position: relative;
   z-index: 9;
   text-align: center;
-  background-position: center;
-  background-size: auto 110%;
-  background-image: url(../img/shade.png);
-  background-repeat: no-repeat;
-  opacity: 0;
   overflow: hidden;
 }
 
-body.ready #home{
-  transition: .4s;
-  opacity: 1;
-}
-
-
-#home:before{
+#home:before,
+#home figure:before{
   height: 100%;
   display: inline-block;
   vertical-align: middle;
   content: "";
 }
 
-#home .dudes{
-  display: inline-block;
-  vertical-align: middle;
-  height: 80%;
-  position: relative;
-  margin-left: 5%;
-}
+#home figure{
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  text-align: center;
 
-#home .dudes img{
-  display: block;
-  height: 100%;
-  transform: rotate(90deg);
-}
-
-#home .dudes .mask.step-1 {
   -webkit-mask: url(../img/sprite2.png);
           mask: url(../img/sprite2.png);
   -webkit-mask-size: 7100% 100%;
           mask-size: 7100% 100%;
   -webkit-mask-position: 100% 0;
           mask-position: 100% 0;
-  height: 100%;
-  transform: rotate(-90deg);
+  opacity: 0;
 }
 
-#home .dudes .mask.step-2 {
-  -webkit-mask: url(../img/sprite.png);
-          mask: url(../img/sprite.png);
-  -webkit-mask-size: 7500% 100%;
-          mask-size: 7500% 100%;
+body.ready #home figure{
+  opacity: 1;
+  -webkit-animation: mask-play 1s steps(70) forwards 2.3s;
+          animation: mask-play 1s steps(70) forwards 2.3s;
+}
+
+#home figure img{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -7%;
+}
+
+#home h1{
+  font-size: 130px;
+  color: #fff;
+  font-family: Summer;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  font-style: italic;
+  transform: rotate(-15deg);
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  padding: 100px;
+
+  -webkit-mask: url(../img/sprite3.png);
+        mask: url(../img/sprite3.png);
+  -webkit-mask-size: 3000% 100%;
+          mask-size: 3000% 100%;
   -webkit-mask-position: 100% 0;
           mask-position: 100% 0;
-  height: 100%;
-  transform: rotate(-90deg);
 }
 
-#home .dudes .mask.step-2 {
+body.ready #home h1{
+  opacity: 1;
+  -webkit-animation: mask-play 1.8s steps(29) forwards 1s;
+          animation: mask-play 1.8s steps(29) forwards 1s;
+}
+
+#home h1 span{
+  display: inline-block;
+}
+
+#home h1 .each{
+  position: relative;
+  z-index: 3;
+}
+
+#home h1 .abs{
+  display: inline-block;
   position: absolute;
   left: 0;
-  top: 0;
+  right: 0;
+  top: 100px;
 }
 
-body.ready #home .dudes .mask.step-1 {
-  -webkit-animation: mask-play 1s steps(70) forwards 1.6s;
-          animation: mask-play 1s steps(70) forwards 1.6s;
-  opacity: 0;
-  transition: .4s;
-  transition-delay: 2.8s;
+#home h1 .abs:nth-child(2){
+  margin-left: -5px;
+  margin-top: -5px;
+  color: #2d29e3;
+  opacity: .5;
+  z-index: 2;
 }
 
-body.ready #home .dudes .mask.step-2 {
-  -webkit-animation: mask-play .7s steps(74) forwards 2.2s;
-          animation: mask-play .7s steps(74) forwards 2.2s;
+#home h1 .abs:nth-child(3){
+  margin-right: -5px;
+  margin-top: 5px;
+  color: #e32948;
+  opacity: .5;
+  z-index: 1;
 }
+
+
 
 @-webkit-keyframes mask-play {
   from {
